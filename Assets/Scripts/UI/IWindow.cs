@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace.UI
+﻿namespace UI
 {
     public interface IWindow
     {

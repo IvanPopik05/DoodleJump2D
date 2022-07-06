@@ -1,6 +1,7 @@
-﻿using DefaultNamespace.UI;
-using Generator_Container;
+﻿using Generator_Container;
+using Pause_System;
 using Player_Container;
+using UI;
 using UnityEngine;
 
 namespace Infrastructure
@@ -8,13 +9,12 @@ namespace Infrastructure
     public class GameBootstrapper : MonoBehaviour
     {
         [SerializeField] private LevelGenerator _levelGenerator;
-        [SerializeField] private LevelGeneratorSO _levelGeneratorSo;
-        [SerializeField] private GameUI _gameUi;
         [SerializeField] private PlayerController _playerController;
+        [SerializeField] private GameUI _gameUi;
+
         private void Start()
         {
-            //_levelGenerator.Initialize();
-            _levelGeneratorSo.Initialize();
+            _levelGenerator.Initialize();
             _playerController.Initialize();
             _gameUi.Initialize();
         }

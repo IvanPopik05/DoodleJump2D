@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace DefaultNamespace.UI
+namespace UI.Windows_container
 {
     public class GameWindow : MonoBehaviour, IWindow
     {
@@ -14,36 +14,24 @@ namespace DefaultNamespace.UI
 
         public GameOverWindow GetGameOverWindow() => _gameOverWindow;
         
-        public void Initialize(IWindow menuWindow)
+        public void Initialize()
         {
             _gameOverWindow.Initialize();
             _pauseWindow.Initialize(this);
-            IsActiveElements(false);
-            _restartBtn.onClick.AddListener(() => Restart(menuWindow));
+            _restartBtn.onClick.AddListener(Restart);
             _pauseBtn.onClick.AddListener(() => _pauseWindow.Open());
-        }
-
-        private void Restart(IWindow window)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            Open(window);
         }
 
         public void Open(IWindow window = null)
         {
-            IsActiveElements(true);
             gameObject.SetActive(true);
             window?.Close();
         }
 
-        public void Close()
-        {
-            IsActiveElements(false);
+        public void Close() => 
             gameObject.SetActive(false);
-        }
 
-        private void IsActiveElements(bool isActive)
-        {
-        }
+        private void Restart() => 
+            SceneManager.LoadScene(ScenePath.GAME_SCENE);
     }
 }

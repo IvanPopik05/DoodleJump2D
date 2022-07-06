@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-
+﻿
 namespace Pool_Container
 {
-    public interface IPool<T> where T : MonoBehaviour
+    public interface IPool<T>
     {
         T GetElement();
         void ReturnToPull(T element);

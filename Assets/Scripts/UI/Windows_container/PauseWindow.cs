@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Pause_System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace DefaultNamespace.UI
+namespace UI.Windows_container
 {
     public class PauseWindow : MonoBehaviour, IWindow
     {
@@ -19,15 +20,19 @@ namespace DefaultNamespace.UI
 
         public void Open(IWindow window = null)
         {
+            PauseManager.Instance.OnPause();
             gameObject.SetActive(true);
             window?.Close();
         }
 
-        public void Close() => 
+        public void Close()
+        {
+            PauseManager.Instance.OnUnpause();
             gameObject.SetActive(false);
+        }
 
         private void MainMenu() => 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(ScenePath.MAIN_MENU_SCENE);
 
         private void Quit() => 
             Application.Quit();

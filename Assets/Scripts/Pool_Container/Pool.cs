@@ -8,15 +8,14 @@ namespace Pool_Container
     public class Pool<T> : IPool<T> where T : MonoBehaviour
     {
         private Queue<PullElement> _pool;
+        private T _prefab;
         
-        private readonly T _prefab;
-        private readonly GeneratorRandom _generatorRandom;
+        private readonly GeneratorRandom<T> _generatorRandom;
         private readonly Transform _container;
         private readonly int _baseQuantity;
         private readonly int _additionQuantity;
-        public Pool(T prefab, Transform container,GeneratorRandom generatorRandom, int baseQuantity, int additionQuantity)
+        public Pool(Transform container,GeneratorRandom<T> generatorRandom, int baseQuantity, int additionQuantity)
         {
-            _prefab = prefab;
             _container = container;
             _generatorRandom = generatorRandom;
             _baseQuantity = baseQuantity;
@@ -61,6 +60,7 @@ namespace Pool_Container
 
         private T CreateElement(bool isActiveByDefault = false)
         {
+            _prefab = _generatorRandom.GetRandomElement();
             T newElement = Object.Instantiate(_prefab, _generatorRandom.GetRandomPosition(), Quaternion.identity, _container);
             newElement.gameObject.SetActive(isActiveByDefault);
             

@@ -11,7 +11,6 @@ namespace Player_Container
         public PlayerBorders()
         {
             _camera = Camera.main;
-            
             _screenInCameraCoordsX = _camera.aspect * _camera.orthographicSize;
         }
 
