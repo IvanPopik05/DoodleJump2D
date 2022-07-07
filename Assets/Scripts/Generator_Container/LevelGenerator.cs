@@ -12,6 +12,7 @@ namespace Generator_Container
         [SerializeField] private List<BasePlatform> _platformPrefabs;
         [SerializeField] private Transform _startingPointSpawn;
         [SerializeField] private Transform _lowerCameraPosition;
+        [SerializeField] private Vector2 _spawnBetweenElements;
         [SerializeField] private int _baseQuantity = 7;
         [SerializeField] private int _additionQuantity;
         [SerializeField] private int _amountStartElements = 7;
@@ -25,7 +26,7 @@ namespace Generator_Container
         public bool IsPaused => PauseManager.Instance.IsPaused;
         public void Initialize()
         {
-            _generatorRandom = new GeneratorRandom<BasePlatform>(_platformPrefabs,_startingPointSpawn.position);
+            _generatorRandom = new GeneratorRandom<BasePlatform>(_platformPrefabs,_startingPointSpawn.position,_spawnBetweenElements);
             _pool = new Pool<BasePlatform>(transform,_generatorRandom,_baseQuantity,_additionQuantity);
 
             StartSpawn();

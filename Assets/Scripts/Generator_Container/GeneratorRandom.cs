@@ -9,13 +9,13 @@ namespace Generator_Container
         private Vector2 _randomPoint;
         private bool _isStart = false;
         private Camera _camera;
-        private Transform _endPoint;
         
         private readonly float _screenInCameraCoordsX;
-        private readonly Vector2 _pointY = new Vector2(0.5f,1.5f);
+        private readonly Vector2 _pointY;
         private readonly List<T> _listElements;
-        public GeneratorRandom(List<T> listElements,Vector2 startingPointSpawn)
+        public GeneratorRandom(List<T> listElements,Vector2 startingPointSpawn, Vector2 spawnBetweenElementsY)
         {
+            _pointY = spawnBetweenElementsY;
             _listElements = listElements;
             _camera = Camera.main;
             _startingPointSpawn = startingPointSpawn;
@@ -48,7 +48,7 @@ namespace Generator_Container
             {
                 return _listElements[0];
             }
-
+            
             int range = Random.Range(0, _listElements.Count);
             return _listElements[range];
         }

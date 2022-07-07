@@ -1326,6 +1326,7 @@ MonoBehaviour:
   - {fileID: 4458531682620449569, guid: 157370797e72668418d5f67e17bb1784, type: 3}
   _startingPointSpawn: {fileID: 721993452}
   _lowerCameraPosition: {fileID: 1002463858}
+  _spawnBetweenElements: {x: 0.3, y: 0.7}
   _baseQuantity: 7
   _additionQuantity: 3
   _amountStartElements: 10
