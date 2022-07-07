@@ -33,7 +33,7 @@ namespace Platform_Container
             _camera = Camera.main;
             _screenCoordsX = (_camera.orthographicSize * _camera.aspect) - _sprite.bounds.extents.x;
             _screenCoordsYMax = transform.position.y + 4;
-            _screenCoordsYMin = transform.position.y - 4;
+            _screenCoordsYMin = transform.position.y - 2;
             
             _lowerCameraPosition = lowerCameraPosition;
             _platformMovingType = RandomDirection();
